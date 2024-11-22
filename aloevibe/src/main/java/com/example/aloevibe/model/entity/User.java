@@ -1,8 +1,9 @@
 package com.example.aloevibe.model.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -16,8 +17,22 @@ public class User extends BaseEntity {
     private String firstName;
     @Column(nullable = false)
     private String lastName;
-    @Column(nullable = false)
+    @Column(unique = true, nullable = false)
     private String phone;
+
+    @ManyToMany(
+            fetch = FetchType.EAGER
+    )
+    @JoinTable(
+            name = "users_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private List<UserRole> roles;
+
+    public User() {
+        this.roles = new ArrayList<>();
+    }
 
     public String getEmail() {
         return email;
@@ -57,5 +72,13 @@ public class User extends BaseEntity {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public List<UserRole> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<UserRole> roles) {
+        this.roles = roles;
     }
 }
