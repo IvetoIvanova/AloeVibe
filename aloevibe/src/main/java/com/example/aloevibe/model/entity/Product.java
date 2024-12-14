@@ -22,7 +22,7 @@ public class Product extends BaseEntity {
     private BigDecimal price;
     @Column(nullable = false)
     private boolean available;
-    @Column(precision = 3, scale = 2)
+    @Column
     private Double rating;
     @ManyToMany
     private List<Category> categories;

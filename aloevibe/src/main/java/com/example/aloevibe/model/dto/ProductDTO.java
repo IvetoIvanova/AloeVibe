@@ -6,9 +6,12 @@ import jakarta.validation.constraints.NotNull;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.UUID;
 
 public class ProductDTO {
-    @NotBlank
+
+    private UUID id;
+    @NotBlank(message = "Името на продукта е задължително.")
     private String name;
     @NotBlank
     private String sku;
@@ -111,5 +114,13 @@ public class ProductDTO {
 
     public void setImages(List<String> images) {
         this.images = images;
+    }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
     }
 }
