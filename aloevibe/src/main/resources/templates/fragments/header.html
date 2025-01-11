@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="bg"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>aloevibe.com</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+<header>
+    <div class="top-bar pb-2">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-6 col-md-3 logo">
+                    <a href="/">
+                        <img src="/images/logo.jpeg" class="rounded-circle" alt="Лого">
+                        AloeVibe
+                    </a>
+                </div>
+                <div class="col-6 col-md-6 search-bar d-flex justify-content-center">
+                    <input type="text" placeholder="Търсене...">
+                    <button>
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <div class="col-12 col-md-3 ml-auto user-actions d-flex justify-content-end">
+                    <div class="account-menu">
+                        <i class="fas fa-user"></i>
+                        <div class="dropdown">
+                            <div sec:authorize="!isAuthenticated()">
+                                <a href="/login">Вход</a>
+                                <a href="/register">Регистрация</a>
+                            </div>
+                            <div sec:authorize="isAuthenticated()">
+                                <a href="/profile">Моят профил</a>
+                                <a href="/orders">Моите поръчки</a>
+                                <a href="/favorites">Любими продукти</a>
+                                <form method="post" action="/logout" class="logout-form">
+                                    <button type="submit" class="dropdown-item-btn">Изход</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="favorites" title="Любими продукти" sec:authorize="isAuthenticated()">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        <i class="fas fa-arrow-right cart-separator"></i>
+                        <span class="cart-total">0.00 лв</span>
+                        <div class="cart-dropdown">
+                            <ul></ul>
+                            <div class="cart-buttons">
+                                <a href="/cart" class="btn">Виж количката</a>
+                                <a href="/checkout" class="btn btn-primary">Купи</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg bottom-bar">
+        <div class="container">
+            <button class="navbar-toggler text-white" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item dropdown category-dropdown">
+                        <a href="#" class="nav-link dropdown-toggle category" id="categoryDropdown"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            Категории <i class="arrow-icon bi bi-chevron-down"></i>
+                        </a>
+                        <div class="dropdown-menu category-menu" aria-labelledby="categoryDropdown">
+                            <a th:each="category : ${categories}"
+                               th:href="@{/products(category=${category.name})}"
+                               th:text="${category.name}"
+                               class="dropdown-item"></a>
+                        </div>
+                    </li>
+                    <li class="nav-link"><a href="/business">Бизнес възможности</a></li>
+                    <li class="nav-link"><a href="/materials">Полезни материали</a></li>
+                    <li class="nav-link"><a href="/blog">Блог</a></li>
+                    <li class="nav-link"><a href="/contact">Контакти</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+</body>
+</html>
