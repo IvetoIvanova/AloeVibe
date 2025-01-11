@@ -10,7 +10,7 @@ import java.util.List;
 @Table(name = "products")
 public class Product extends BaseEntity {
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String name;
     @Column(nullable = false, unique = true)
     private String sku;
@@ -25,6 +25,11 @@ public class Product extends BaseEntity {
     @Column
     private Double rating;
     @ManyToMany
+    @JoinTable(
+            name = "product_categories",
+            joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id")
+    )
     private List<Category> categories;
     @ElementCollection
     private List<String> ingredients;
