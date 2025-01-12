@@ -7,6 +7,7 @@ import jakarta.persistence.Table;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Table(name = "categories")
@@ -26,6 +27,14 @@ public class Category extends BaseEntity {
 
     public Category() {
         this.products = new ArrayList<>();
+    }
+
+    public Category(UUID id, String name, String description, String imageUrl, List<Product> products) {
+        super(id);
+        this.name = name;
+        this.description = description;
+        this.imageUrl = imageUrl;
+        this.products = products;
     }
 
     public String getName() {

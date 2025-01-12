@@ -1,0 +1,24 @@
+spring:
+  datasource:
+    url: jdbc:hsqldb:mem:test_db
+    driver-class-name: org.hsqldb.jdbc.JDBCDriver
+    username: test
+    password: test
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    defer-datasource-initialization: true
+  security:
+    user:
+      name: test-user
+      password: test-password
+
+logging:
+  level:
+    org:
+      hibernate:
+        type:
+          descriptor: TRACE
+        SQL: DEBUG
+      nodeValue: WARN
+    blog: WARN

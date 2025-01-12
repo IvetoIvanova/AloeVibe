@@ -19,6 +19,13 @@ public class BaseEntity {
             nullable = false)
     private UUID id;
 
+    public BaseEntity() {
+    }
+
+    public BaseEntity(UUID id) {
+        this.id = id;
+    }
+
     public UUID getId() {
         return id;
     }
