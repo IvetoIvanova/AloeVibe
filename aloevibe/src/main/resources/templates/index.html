@@ -20,7 +20,15 @@
         <div class="container mt-4">
             <section class="hero-section">
                 <div class="container">
-                    <h1>Добре дошли в AloeVibe</h1>
+                    <h1 sec:authorize="!isAuthenticated()">Добре дошли в AloeVibe!</h1>
+
+                    <div class="container mt-4" sec:authorize="isAuthenticated()">
+                        <h1 class="text-center">
+                            <span>Добре дошли в AloeVibe,</span>
+                            <span th:text="${welcomeMessage}"></span>!
+                        </h1>
+                    </div>
+
                     <p>Вашият доверен магазин за натурални и органични продукти!</p>
                     <a href="/products" class="btn btn-lg btn-primary mt-3">Разгледайте продуктите</a>
                 </div>

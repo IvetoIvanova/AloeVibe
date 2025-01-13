@@ -12,6 +12,16 @@ public class CategoryDTO {
 
     private String imageUrl;
 
+    public CategoryDTO() {
+    }
+
+    public CategoryDTO(UUID id, String name, String description, String imageUrl) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.imageUrl = imageUrl;
+    }
+
     public UUID getId() {
         return id;
     }
