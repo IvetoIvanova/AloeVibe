@@ -20,9 +20,7 @@ public class User extends BaseEntity {
     @Column(unique = true, nullable = false)
     private String phone;
 
-    @ManyToMany(
-            fetch = FetchType.EAGER
-    )
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "users_roles",
             joinColumns = @JoinColumn(name = "user_id"),

@@ -29,5 +29,13 @@ logging:
       nodeValue: WARN
     blog: WARN
 
+security:
+  remembered:
+    key: ${remember_me_key}
+
+admin:
+  password: ${admin_password}
+  email: ${admin_email}
+
 server:
   port: ${server_port}
