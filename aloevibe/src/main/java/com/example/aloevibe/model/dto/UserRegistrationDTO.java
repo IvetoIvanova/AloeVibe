@@ -18,7 +18,6 @@ public class UserRegistrationDTO {
     @NotBlank(message = "Фамилията е задължителна.")
     private String lastName;
 
-    @NotBlank(message = "Телефонният номер е задължителен.")
     @Size(min = 10, max = 15)
     private String phone;
 

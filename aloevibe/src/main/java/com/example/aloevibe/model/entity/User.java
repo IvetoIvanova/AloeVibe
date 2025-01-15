@@ -17,7 +17,7 @@ public class User extends BaseEntity {
     private String firstName;
     @Column(nullable = false)
     private String lastName;
-    @Column(unique = true, nullable = false)
+    @Column(unique = true)
     private String phone;
 
     @ManyToMany(fetch = FetchType.EAGER)
