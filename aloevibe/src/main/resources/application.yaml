@@ -37,5 +37,9 @@ admin:
   password: ${admin_password}
   email: ${admin_email}
 
+recaptcha:
+  siteKey: ${recaptcha_siteKey}
+  secretKey: ${recaptcha_secretKey}
+
 server:
   port: ${server_port}

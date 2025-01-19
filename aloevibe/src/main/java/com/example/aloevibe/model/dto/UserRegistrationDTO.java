@@ -8,7 +8,7 @@ import static com.example.aloevibe.util.Constants.PASSWORD_REGEX;
 @PasswordMatches
 public class UserRegistrationDTO {
 
-    @NotNull(message = "Имейлът е задължителен.")
+    @NotBlank(message = "Имейлът е задължителен.")
     @Email(message = "Моля, въведете валиден имейл адрес.")
     private String email;
 
