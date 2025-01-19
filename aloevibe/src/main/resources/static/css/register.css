@@ -1,0 +1,44 @@
+body {
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+}
+
+.registration-form {
+    max-width: 600px;
+    margin-top: 50px;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-weight: 500;
+}
+
+.required-field::after {
+    content: " *";
+    color: red;
+}
+
+.btn-primary {
+    width: 100%;
+}
+
+.text-danger {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.btn {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.g-recaptcha {
+    display: inline-block;
+}

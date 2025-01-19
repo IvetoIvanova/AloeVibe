@@ -7,22 +7,22 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/styles.css">
     <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/register.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
-
 <header>
     <th:block th:replace="~{fragments/header::header}"></th:block>
 </header>
-
 <div class="wrapper">
     <div class="container">
         <div class="registration-form">
             <h2 class="text-center form-title">Регистрация</h2>
-            <form
-                    th:method="POST"
-                    th:action="@{/register}"
-                    th:object="${registerData}"
+            <form id="registrationForm"
+                  th:method="POST"
+                  th:action="@{/register}"
+                  th:object="${registerData}"
+                  onsubmit="return validateRecaptcha()"
             >
                 <div class="form-group mb-3">
                     <label for="firstName" class="required-field">Име</label>
@@ -87,6 +87,11 @@
                           th:if="${#fields.hasErrors('confirmPassword')}"
                           th:errors="*{confirmPassword}"></span>
                 </div>
+
+                <div class="form-group mb-3 text-center">
+                    <div class="g-recaptcha" th:attr="data-sitekey=${recaptchaSiteKey}"></div>
+                </div>
+
                 <div class="form-group mb-3">
                     <p class="small-text">
                         <span>С регистрацията си, вие се съгласявате с нашите</span>
@@ -94,7 +99,8 @@
                     </p>
                 </div>
 
-                <button type="submit" class="btn custom-btn btn-block">Регистрация</button>
+                <button type="submit" value="Submit" class="btn btn-primary" data-callback="onSubmit">Регистрация
+                </button>
                 <div th:if="${errorMessage}" class="error-message">
                     <p th:text="${errorMessage}" class="error-text"></p>
                 </div>
@@ -105,7 +111,10 @@
         <th:block th:replace="~{fragments/footer::footer}"></th:block>
     </footer>
 </div>
+
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="/js/bootstrap.bundle.min.js"></script>
+<script src="/js/recaptcha-validation.js"></script>
 </body>
 </html>
