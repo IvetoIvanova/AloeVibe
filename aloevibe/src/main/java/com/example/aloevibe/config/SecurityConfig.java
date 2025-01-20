@@ -29,6 +29,7 @@ public class SecurityConfig {
                                         .requestMatchers(
                                                 "/",
                                                 "/login",
+                                                "/login/forgot-password",
                                                 "/register").permitAll()
                                         .anyRequest()
                                         .authenticated()
