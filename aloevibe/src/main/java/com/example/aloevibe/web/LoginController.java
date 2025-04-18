@@ -32,14 +32,4 @@ public class LoginController {
         return "login";
     }
 
-    @GetMapping("/forgot-password")
-    public String showForgotPasswordPage() {
-        return "forgot-password";
-    }
-
-    @PostMapping("/forgot-password")
-    public String processForgotPassword(@RequestParam("email") String email, Model model) {
-        model.addAttribute("message", "Инструкции за възстановяване на паролата са изпратени на " + email);
-        return "forgot-password";
-    }
 }

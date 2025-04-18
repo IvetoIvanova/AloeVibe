@@ -82,7 +82,7 @@ public class DataInitializer implements CommandLineRunner {
             admin.setPassword(passwordEncoder.encode(adminPassword));
             admin.setFirstName("Admin");
             admin.setLastName("Admin");
-            admin.setPhone("123456789");
+//            admin.setPhone("123456789");
 
             UserRole adminRole = roleRepository.findByRole(UserRoleEnum.ADMIN);
             UserRole userRole = roleRepository.findByRole(UserRoleEnum.USER);
